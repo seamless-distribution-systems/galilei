@@ -1,0 +1,46 @@
+# file: roles/init/tasks/main.yml
+---
+
+#- name: Update Yum
+#  yum: name=* state=latest
+
+- name: Add repository
+  yum_repository:
+    name: Bootstrap EPEL
+    description: Bootstrap EPEL
+    mirrorlist: http://mirrors.fedoraproject.org/mirrorlist?repo=epel-\$releasever&arch=\$basearch
+    failovermethod: priority
+    enabled: no
+    gpgcheck: no
+
+- name: Install EPEL
+  command: yum --enablerepo=epel -y install epel-release
+
+- name: Clean up Bootstrap EPEL
+  command: rm -f /etc/yum.repos.d/epel-bootstrap.repo
+
+- name: Install Prerequisites
+  yum: pkg={{ item }} state=installed
+  with_items:
+     - autoconf
+     - automake
+     - curl
+     - gcc
+     - git
+     - libmnl-devel
+     - libuuid-devel
+     - lm_sensors
+     - make
+     - MySQL-python
+     - nc
+     - pkgconfig
+     - python
+     - python-psycopg2
+     - PyYAML
+     - zlib-devel
+     - curl
+     - gcc
+     - kernel-devel
+     - wget
+     - unzip
+     - libselinux-python

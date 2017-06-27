@@ -1,0 +1,5 @@
+# file: roles/httpd/handlers/main.yml
+---
+
+- name: restart netdata
+  service: name=netdata state=restarted

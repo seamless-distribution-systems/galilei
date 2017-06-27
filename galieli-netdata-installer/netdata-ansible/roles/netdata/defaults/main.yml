@@ -1,0 +1,7 @@
+# file: roles/httpd/defaults/main.yml
+---
+
+# used in configuration files
+netdata_install_dir: /opt/netdata
+doc_root: /var/www/html
+hostname: localhost

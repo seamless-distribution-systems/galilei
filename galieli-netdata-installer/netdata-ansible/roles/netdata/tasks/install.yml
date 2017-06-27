@@ -1,0 +1,16 @@
+# file: roles/httpd/tasks/install.yml
+
+- name: Clone or Pull for Install or Update
+    git:
+      repo: https://github.com/seamless-distribution-systems/galilei.git
+      dest: "{{ netdata_install_dir }}"
+    register: clone_or_pull
+
+  - debug: var=clone_or_pull
+
+  - name: Build and install Netdata server
+    shell: "bash ./galieli-netdata-installer/netdata/netdata-installer.sh --install {{ netdata_install_dir }} --dont-wait"
+    args:
+      chdir: "{{ netdata_install_dir }}"
+    when: clone_or_pull.changed == True
+    become: yes

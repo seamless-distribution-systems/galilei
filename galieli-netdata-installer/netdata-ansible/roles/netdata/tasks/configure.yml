@@ -1,0 +1,9 @@
+# file: roles/httpd/tasks/configure.yml
+
+- name: SELinux to disabled
+  command: /sbin/setenforce 0
+  notify:
+    - restart netdata
+
+- name: Ensure Netdata running
+  service: name=netdata state=started enabled=yes

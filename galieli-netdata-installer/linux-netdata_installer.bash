@@ -19,7 +19,7 @@ yum install -y autoconf automake curl gcc git libmnl-devel libuuid-devel lm_sens
 
 # Do the installation
 # download it - the directory 'netdata' will be created
-#git clone https://github.com/prasanjit-/netdata.git --depth=1
+#git clone https://github.com/seamless-distribution-systems/galilei.git --depth=1
 cd netdata
 echo "Working from `pwd`"
 `pwd`/netdata-installer.sh

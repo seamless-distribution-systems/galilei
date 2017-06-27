@@ -3,5 +3,6 @@
 
 # used in configuration files
 netdata_install_dir: /opt/netdata
+netdata_install_temp: /opt/netdata_temp
 doc_root: /var/www/html
 hostname: localhost

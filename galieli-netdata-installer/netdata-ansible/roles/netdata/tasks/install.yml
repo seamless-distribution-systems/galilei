@@ -3,19 +3,22 @@
   - name: Cleanup Netdata if Exists
     command: "rm -rf {{ netdata_install_dir }}"
 
+  - name: Cleanup Netdata if Exists
+    command: "rm -rf {{ netdata_install_temp }}"
+
   - name: Clone or Pull for Install or Update
     git:
       repo: https://github.com/seamless-distribution-systems/galilei.git
-      dest: "{{ netdata_install_dir }}"
+      dest: "{{ netdata_install_temp }}"
     register: clone_or_pull
 
   - name: Move contents of Netdata server
-    command: "mv {{ netdata_install_dir }}/galieli-netdata-installer/netdata/* ."
+    command: "mv {{ netdata_install_temp }}/galieli-netdata-installer/netdata /opt/"
 
   - debug: var=clone_or_pull
 
   - name: Build and install Netdata server
-    shell: "bash ./galieli-netdata-installer/netdata/netdata-installer.sh --install {{ netdata_install_dir }} --dont-wait --libs-are-really-here"
+    shell: "./netdata-installer.sh --install {{ netdata_install_dir }} --dont-wait --libs-are-really-here"
     args:
       chdir: "{{ netdata_install_dir }}"
     when: clone_or_pull.changed == True

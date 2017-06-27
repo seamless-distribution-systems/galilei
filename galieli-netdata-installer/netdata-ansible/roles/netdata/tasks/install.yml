@@ -1,10 +1,10 @@
 # file: roles/httpd/tasks/install.yml
 
-- name: Clone or Pull for Install or Update
-    git:
-      repo: https://github.com/seamless-distribution-systems/galilei.git
-      dest: "{{ netdata_install_dir }}"
-    register: clone_or_pull
+  - name: Clone or Pull for Install or Update
+      git:
+        repo: https://github.com/seamless-distribution-systems/galilei.git
+        dest: "{{ netdata_install_dir }}"
+      register: clone_or_pull
 
   - debug: var=clone_or_pull
 

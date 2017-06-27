@@ -1,7 +1,7 @@
 # file: roles/httpd/tasks/configure.yml
 
 - name: SELinux to disabled
-  command: /sbin/setenforce 0
+  command: /usr/sbin/setenforce 0
   notify:
     - restart netdata
 

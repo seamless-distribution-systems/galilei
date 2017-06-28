@@ -1,0 +1,8 @@
+# file: roles/php56/handlers/main.yml
+---
+
+- name: restart postfix
+  service: name=postfix state=restarted
+
+- name: restart netdata
+  service: name=netdata state=restarted

@@ -1,0 +1,7 @@
+# Deployment Steps for Netdata
+
+git clone https://github.com/seamless-distribution-systems/galilei.git
+cd galilei/galieli-netdata-installer/netdata-ansible/
+ansible-playbook -i hosts install.yml --ask-pass  # Install's Netdata Dashboard
+# or
+ansible-playbook -i hosts install_with_alarm.yml --ask-pass  # Install Netdata Dashboard + Alarms

@@ -44,3 +44,4 @@
      - wget
      - unzip
      - libselinux-python
+     - mail

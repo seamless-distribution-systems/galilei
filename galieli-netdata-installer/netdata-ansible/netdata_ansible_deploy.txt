@@ -1,7 +1,19 @@
 # Deployment Steps for Netdata
 
+
+# Installation
 git clone https://github.com/seamless-distribution-systems/galilei.git
 cd galilei/galieli-netdata-installer/netdata-ansible/
 ansible-playbook -i hosts install.yml --ask-pass  # Install's Netdata Dashboard
 # or
 ansible-playbook -i hosts install_with_alarm.yml --ask-pass  # Install Netdata Dashboard + Alarms
+
+
+# Testing Alarm Mails
+
+/opt/netdata/netdata/usr/libexec/netdata/plugins.d/alarm-notify.sh test
+
+
+# Uninstall Netdata
+
+service netdata stop ; rm -rf /opt/netdata

@@ -1,4 +1,4 @@
-# file: roles/init/tasks/main.yml
+# file: roles/postinit/tasks/main.yml
 ---
 
 #- name: Update Yum
@@ -9,16 +9,17 @@
   notify:
     - restart postfix
 
+- name: Ensure Postfix running
+  service: name=postfix state=started enabled=yes
+
+
 - name: Copy Alarm Script - alarm-notify.sh
-  template: src=alarm-notify.sh dest=/opt/netdata/netdata/usr/libexec/netdata/plugins.d/alarm-notify.sh
+  copy: src=../templates/alarm-notify.sh dest=/opt/netdata/netdata/usr/libexec/netdata/plugins.d/alarm-notify.sh
 
 - name: Copy Alarm Config - health_alarm_notify.conf
-  template: src=health_alarm_notify.conf dest=/opt/netdata/netdata/etc/netdata/health_alarm_notify.conf
+  copy: src=../templates/health_alarm_notify.conf dest=/opt/netdata/netdata/etc/netdata/health_alarm_notify.conf
   notify:
     - restart netdata
 
 - name: Ensure Netdata running
   service: name=netdata state=started enabled=yes
-
-- name: Ensure Postfix running
-  service: name=postfix state=started enabled=yes

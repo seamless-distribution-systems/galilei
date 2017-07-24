@@ -21,10 +21,10 @@ For example, to get the 'galieli-netdata-installer' project follow these steps:
 
 **Steps to Install**
 
-git clone https://github.com/seamless-distribution-systems/galilei.git
+```git clone https://github.com/seamless-distribution-systems/galilei.git
 cd galilei/galieli-netdata-installer
 chmod +x linux-netdata_installer.bash
-bash linux-netdata_installer.bash
+bash linux-netdata_installer.bash```
 
 
  **Galilei Contents**

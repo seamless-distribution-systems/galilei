@@ -45,3 +45,4 @@
      - unzip
      - libselinux-python
      - mail
+  ignore_errors: yes
